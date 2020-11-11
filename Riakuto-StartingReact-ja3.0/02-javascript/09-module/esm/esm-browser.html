@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>ES Module Test</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <!--
+        ES Modules(モジュールシステムのこと)とは？
+          - CommonJS の不満を解消した仕様！
+          - ECMAScript 標準なので主要なブラウザがサポートしている
+          - 静的解析を念頭に設計された
+          - 同期及び非同期ローディング双方をサポート
+        Module モード
+          - ES Modules が適用される
+          - type="module" を使用すると script タグ内で moduleモードを有効にすることができる
+          - 自動的に strictモード が適用される 
+        Script モード
+          - 従来どおりの動き（すべてがグローバル名前空間に展開される）
+      -->
+    <script type="module">
+import uniq from 'https://dev.jspm.io/lodash-es/uniq.js';
+
+const arr = [12, 2, 2, 2, 9, 5, 12, 11, 15, 8, 9, 8];
+const elems = uniq(arr)
+  .sort((n, m) => n < m ? -1 : 1)
+  .map(n => `<li>${n}</li>`)
+  .join('');
+document.getElementById('list').innerHTML = elems;
+</script>
+  </body>
+</html>
