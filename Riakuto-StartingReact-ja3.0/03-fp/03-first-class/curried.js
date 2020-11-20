@@ -35,5 +35,3 @@
   const triple = withMultiple(3);
   console.log(triple(5));                   // 15
 }
-
-

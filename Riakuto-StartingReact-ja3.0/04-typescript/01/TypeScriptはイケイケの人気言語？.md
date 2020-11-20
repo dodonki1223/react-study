@@ -49,7 +49,7 @@
 
 #### 2. 開発元は天下の Microsoft
 
-- 開発者に `Anders Hejlsberg` が携わっている（Turbo, Pascal, Delphi, C# および .NET Frameworkの設計者）
+- 開発者に `Anders Hejlsberg` が携わっている（Turbo Pascal, Delphi, C# および .NET Frameworkの設計者）
 - Google も2017年に TypeScript を社内の標準言語の１つに加えている
 - GAFAM の内、２社が後ろ盾になっている
 
