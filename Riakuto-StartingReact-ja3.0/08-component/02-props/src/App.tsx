@@ -1,3 +1,6 @@
+/*
+    FC：Reactの関数コンポーネント型のインターフェース `FunctionComponent` のエイリアス
+ */
 import React, { FC } from 'react';
 import CharacterList, { Character } from './CharacterList';
 import './App.css';
