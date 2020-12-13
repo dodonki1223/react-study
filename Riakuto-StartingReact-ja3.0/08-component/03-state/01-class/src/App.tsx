@@ -3,6 +3,10 @@ import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
 class App extends Component {
+  /*
+      クラスのメンバー変数で定義されている
+      TypeScript のプロパティ初期化子で定義
+   */
   characters: Character[] = [
     {
       id: 1,
@@ -35,6 +39,10 @@ class App extends Component {
     },
   ];
 
+  /*
+      - 関数コンポーネントではその関数自体が返す返り値がレンダリング対象になっていた
+      - クラスコンポーネントでは代わりにメンバーメソッド `render()` が戻り値になっている
+   */
   render(): ReactElement {
     return (
       <div className="container">

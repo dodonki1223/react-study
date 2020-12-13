@@ -16,6 +16,11 @@ type Props = {
 
 class CharacterList extends Component<Props> {
   render(): ReactElement {
+    /*
+        props へのアクセスはメンバー変数 props から行うようになっている
+        関数コンポーネントの場合はその関数の引数として受け渡されたわけだけど、クラスの場合は
+        this.props に格納されているのでそれを抽出する
+     */
     const { school, characters } = this.props;
 
     return (
