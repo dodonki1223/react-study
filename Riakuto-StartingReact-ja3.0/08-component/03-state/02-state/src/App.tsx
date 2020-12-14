@@ -21,19 +21,23 @@ class App extends Component<unknown, State> {
     this.state = { count: 0 };
   }
 
-  reset(): void {
+  reset = (): void => {
     this.setState({ count: 0 });
-  }
+  };
 
-  increment(): void {
-    /*
-        「this.setState({ count: state.count + 1 })」の書き方では駄目なの？
-          - クラスの state の更新は React によるレンダリング最適化処理の中で非同期に行われる
-          - increment() が参照する state の値はその瞬間での最新の値であることが厳密には保証されない
-          - state の前の状態に依存するような変更処理は (state, props) => ({ foo: state.foo + props.bar }) の書き方を使用したほうがよい
-     */
+  // increment(): void {
+  //   /*
+  //       「this.setState({ count: state.count + 1 })」の書き方では駄目なの？
+  //         - クラスの state の更新は React によるレンダリング最適化処理の中で非同期に行われる
+  //         - increment() が参照する state の値はその瞬間での最新の値であることが厳密には保証されない
+  //         - state の前の状態に依存するような変更処理は (state, props) => ({ foo: state.foo + props.bar }) の書き方を使用したほうがよい
+  //    */
+  //   this.setState((state) => ({ count: state.count + 1 }));
+  // }
+
+  increment = (): void => {
     this.setState((state) => ({ count: state.count + 1 }));
-  }
+  };
 
   render(): ReactElement {
     const { count } = this.state;
@@ -50,7 +54,7 @@ class App extends Component<unknown, State> {
           </Statistic>
           <Card.Content>
             <div className="ui two buttons">
-              <Button color="red" onClick={() => this.reset()}>
+              <Button color="red" onClick={this.reset}>
                 Reset
               </Button>
               {/*  
@@ -61,8 +65,13 @@ class App extends Component<unknown, State> {
                       イベントへその関数を仕込んでおく
                     - 「() => this.increment()」が親コンポーネント自体の値を更新している
                     - 「onClick={() => this.increment()}」が子コンポーネントに渡してフォーム入力時発火されるイベントへ関数を仕込んでいる
+
+                  - this.increment() にすると TypeError: this.setState is not a function が発生してい実行できない
+                    - この時、参照する this は Button オブジェクトを指しており、 setState メソッドなど存在しないためである
+                    - クラスで定義したメソッドをアロー関数で書き換えることで対応が可能である
+                  - これはあくまでも関数を設定しているので「this.increment()」ではなく「this.increment」が正しい、実行するわけではない
               */}
-              <Button color="green" onClick={() => this.increment()}>
+              <Button color="green" onClick={this.increment}>
                 +1
               </Button>
             </div>
