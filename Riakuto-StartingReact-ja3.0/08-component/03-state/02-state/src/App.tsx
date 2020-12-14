@@ -1,4 +1,4 @@
-import React, { Component, ReactElement } from 'react';
+import React, { Component, ReactElement, SyntheticEvent } from 'react';
 import { Button, Card, Statistic } from 'semantic-ui-react';
 import './App.css';
 
@@ -21,7 +21,17 @@ class App extends Component<unknown, State> {
     this.state = { count: 0 };
   }
 
-  reset = (): void => {
+  // reset = (): void => {
+  //   this.setState({ count: 0 });
+  // };
+
+  /*
+      - イベントハンドラを省略しない書き方
+        - イベントオブジェクトでイベントハンドラを使ってメソッド内部で何か操作したい場合、引数として受け取れる
+        - e.preventDefault() は該当要素のオリジナルな onClick の挙動なんかを抑制するための記述
+   */
+  reset = (e: SyntheticEvent): void => {
+    e.preventDefault();
     this.setState({ count: 0 });
   };
 
@@ -35,7 +45,11 @@ class App extends Component<unknown, State> {
   //   this.setState((state) => ({ count: state.count + 1 }));
   // }
 
-  increment = (): void => {
+  // increment = (): void => {
+  //   this.setState((state) => ({ count: state.count + 1 }));
+  // };
+  increment = (e: SyntheticEvent): void => {
+    e.preventDefault();
     this.setState((state) => ({ count: state.count + 1 }));
   };
 
