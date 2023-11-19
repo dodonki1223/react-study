@@ -1,4 +1,8 @@
 // 1. ギャラリの完成
+// 最後の彫刻が表示されているときに “Next” を押すと、コードがクラッシュします。
+// クラッシュを防ぐためにロジックを修正してください。そのためには、イベントハンドラに追加のロジックを追加するか、操作が不可能な場合はボタンを無効化しましょう。
+// クラッシュを修正できたら、“Previous” ボタンを追加して、ひとつ前の彫刻を表示するようにしてください。最初の彫刻でクラッシュしないようにしましょう。
+
 // 修正前コード
 /*
 import { useState } from 'react';
@@ -132,6 +136,7 @@ export default function Gallery() {
   let sculpture = sculptureList[index];
   return (
     <>
+      {/* disabled の書き方に関しては disabled={!hasNext} がいけたは……。 */}
       {
         nextButtonEnable ?
         <button onClick={handleNextClick}>Next</button>
